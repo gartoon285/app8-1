@@ -1,11 +1,13 @@
 const express=require('express')
+const cors=require('cors')
 const app=express()
-const port=8000
+const port=35987
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
+app.use(cors())
 app.use(express.static('public'))
 
-app.post('/api/form-post/',(request,respones) =>{
+app.post('/api/form-post/',(request,response) =>{
     let name = request.body.name || ''
     let email = request.body.email || ''
     let msg = request.body.message || ''
@@ -17,7 +19,7 @@ app.post('/api/form-post/',(request,respones) =>{
             <tr><td>ข้อความ: </td><td>${msg}</td></tr>
         </table>
         `
-    respones.send(text)
+    response.send(text)
 })
 
 app.listen(port, () => {

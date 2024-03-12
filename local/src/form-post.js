@@ -8,7 +8,7 @@ export default function FormPost(){
         event.preventDefault()
         const formData = new FormData(form.current)
         const formEnt = Object.fromEntries(formData.entries())
-        fetch('/api/form-post/',{
+        fetch('http://localhost:35987/api/form-post/',{
             method: 'POST',
             body: JSON.stringify(formEnt),
             headers:{'Content-Type':'application/json'}
